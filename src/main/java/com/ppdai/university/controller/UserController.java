@@ -16,8 +16,22 @@ public class UserController {
     @RequestMapping("/info")
     public String info(Map<String, Object> model){
         model.put("time",new Date());
-        model.put("message","dddddd");
+        model.put("message", "hello world <img src=\"image/demo.jpg\">");
         return "welcome";
+    }
+
+    @RequestMapping("/login")
+    public String login(Map<String, Object> model){
+        model.put("time",new Date());
+        model.put("message","dddddd");
+        return "login";
+    }
+
+    @RequestMapping("/index")
+    public String index(Map<String, Object> model){
+        model.put("time",new Date());
+        model.put("message","dddddd");
+        return "index/index";
     }
 
 }

@@ -34,4 +34,17 @@ public class UserController {
         return "index/index";
     }
 
+    @RequestMapping("/content")
+    public String content(Map<String, Object> model){
+        model.put("time",new Date());
+        model.put("message","dddddd");
+        return "content/content";
+    }
+
+    @RequestMapping("/category")
+    public String category(Map<String, Object> model){
+        model.put("time",new Date());
+        model.put("message","dddddd");
+        return "category/category";
+    }
 }

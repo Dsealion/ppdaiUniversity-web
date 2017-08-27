@@ -27,7 +27,7 @@
         body{
             margin-left:auto;
             margin-right:auto;
-            margin-top: 100px;
+            margin-top: 200px;
             width: 300px;
         }
         .container{
@@ -41,9 +41,6 @@
             box-sizing: border-box;
             padding: 10px;
             font-size: 16px;
-        }
-        .form-control-feedback{
-            padding: 5px;
         }
     </style>
 
@@ -59,21 +56,21 @@
         <div class="form-group has-success has-feedback">
             <div class="input-group">
                 <span class="input-group-addon">@</span>
-                <input type="text" class="form-control" id="username" placeholder="账号">
+                <input type="text" class="form-control" v-model="username" placeholder="账号">
             </div>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
             <div class="input-group">
                 <span class="input-group-addon">@</span>
-                <input type="password" class="form-control" id="password" placeholder="密码">
+                <input type="password" class="form-control" v-model="password" placeholder="密码">
             </div>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
             <div class="input-group">
                 <span class="input-group-addon">@</span>
-                <input type="text" class="form-control" id="captcha" @keyup.enter="login" placeholder="验证码">
+                <input type="text" class="form-control" v-model="captcha" @keyup.enter="login" placeholder="验证码">
             </div>
             <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
         </div>

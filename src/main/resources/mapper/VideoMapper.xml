@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ppdai.university.dao.VideoDao">
+
+    <resultMap id="videoResultMap" type="com.ppdai.university.model.Video">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="intro" jdbcType="VARCHAR" property="intro" />
+        <result column="edittime" jdbcType="TIMESTAMP" property="editTime" />
+        <result column="categoryid" jdbcType="INTEGER" property="categoryId" />
+        <result column="url" jdbcType="VARCHAR" property="url" />
+        <result column="videostateid" jdbcType="INTEGER" property="videoStateId" />
+        <result column="remark" jdbcType="VARCHAR" property="remark" />
+    </resultMap>
+
+    <select id="queryVideoInfoById" parameterType="int" resultMap="videoResultMap">
+        select id,name,intro,editTime,categoryId,url,videoStateId,remark
+        from video
+        where id = ${id}
+    </select>
+</mapper>

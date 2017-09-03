@@ -86,11 +86,14 @@
                 <div class="col-xs-3">
                     <ul class="nav nav-pills nav-stacked">
                         <li class="active"><a href="#">所有课程分类</a></li>
-                        <li><a  " href="#">编程开发</a></li>
-                        <li><a href="#">技术分享</a></li>
-                        <li><a href="#">办公效率</a></li>
-                        <li><a href="#">职业发展</a></li>
-                        <li><a href="#">企业培训</a></li>
+                        <#list menuList as menus>
+                            <li><a href=${menus.url}>${menus.name}</a></li>
+                        </#list>
+                        <#--<li><a href="#">编程开发</a></li>-->
+                        <#--<li><a href="#">技术分享</a></li>-->
+                        <#--<li><a href="#">办公效率</a></li>-->
+                        <#--<li><a href="#">职业发展</a></li>-->
+                        <#--<li><a href="#">企业培训</a></li>-->
                     </ul>
                 </div>
                 <div class="col-xs-9">

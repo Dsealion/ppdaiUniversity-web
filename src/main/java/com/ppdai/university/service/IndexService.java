@@ -1,6 +1,7 @@
 package com.ppdai.university.service;
 
 import com.ppdai.university.model.Menu;
+import com.ppdai.university.model.Video;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface IndexService {
      * @return
      */
     public List<Menu> queryMenuInfo();
+
+    public List<Video> queryVideoList(int topNum, int categoryId);
 }

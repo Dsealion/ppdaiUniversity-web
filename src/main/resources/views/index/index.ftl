@@ -134,42 +134,53 @@
                     </div>
                     <div class="panel-body" style="text-align: center">
                         <div class="row">
-                            <div class="col-sm-6 col-md-3">
-                                <a href="#" class="thumbnail">
-                                    <img src="/images/cat.jpg"
-                                         alt="通用的占位符缩略图">
-                                </a>
-                                <p>java基础教程</p>
-                                <p>提供方</p>
-                                <p>播放次数</p>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <a href="#" class="thumbnail">
-                                    <img src="/images/cat.jpg"
-                                         alt="通用的占位符缩略图">
-                                </a>
-                                <p>java基础教程</p>
-                                <p>提供方</p>
-                                <p>播放次数</p>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <a href="#" class="thumbnail">
-                                    <img src="/images/cat.jpg"
-                                         alt="通用的占位符缩略图">
-                                </a>
-                                <p>java基础教程</p>
-                                <p>提供方</p>
-                                <p>播放次数</p>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <a href="#" class="thumbnail">
-                                    <img src="/images/cat.jpg"
-                                         alt="通用的占位符缩略图">
-                                </a>
-                                <p>java基础教程</p>
-                                <p>提供方</p>
-                                <p>播放次数</p>
-                            </div>
+                            <#list videoList1 as videos>
+                                <div class="col-sm-6 col-md-3">
+                                    <a href=${videos.url} class="thumbnail">
+                                        <img src=${videos.thumbnailurl}
+                                             alt="通用的占位符缩略图">
+                                    </a>
+                                    <p>${videos.name}</p>
+                                    <p>${videos.providername}</p>
+                                    <p>播放次数</p>
+                                </div>
+                            </#list>
+                            <#--<div class="col-sm-6 col-md-3">-->
+                                <#--<a href="#" class="thumbnail">-->
+                                    <#--<img src="/images/cat.jpg"-->
+                                         <#--alt="通用的占位符缩略图">-->
+                                <#--</a>-->
+                                <#--<p>java基础教程</p>-->
+                                <#--<p>提供方</p>-->
+                                <#--<p>播放次数</p>-->
+                            <#--</div>-->
+                            <#--<div class="col-sm-6 col-md-3">-->
+                                <#--<a href="#" class="thumbnail">-->
+                                    <#--<img src="/images/cat.jpg"-->
+                                         <#--alt="通用的占位符缩略图">-->
+                                <#--</a>-->
+                                <#--<p>java基础教程</p>-->
+                                <#--<p>提供方</p>-->
+                                <#--<p>播放次数</p>-->
+                            <#--</div>-->
+                            <#--<div class="col-sm-6 col-md-3">-->
+                                <#--<a href="#" class="thumbnail">-->
+                                    <#--<img src="/images/cat.jpg"-->
+                                         <#--alt="通用的占位符缩略图">-->
+                                <#--</a>-->
+                                <#--<p>java基础教程</p>-->
+                                <#--<p>提供方</p>-->
+                                <#--<p>播放次数</p>-->
+                            <#--</div>-->
+                            <#--<div class="col-sm-6 col-md-3">-->
+                                <#--<a href="#" class="thumbnail">-->
+                                    <#--<img src="/images/cat.jpg"-->
+                                         <#--alt="通用的占位符缩略图">-->
+                                <#--</a>-->
+                                <#--<p>java基础教程</p>-->
+                                <#--<p>提供方</p>-->
+                                <#--<p>播放次数</p>-->
+                            <#--</div>-->
                         </div>
                     </div>
                 </div>

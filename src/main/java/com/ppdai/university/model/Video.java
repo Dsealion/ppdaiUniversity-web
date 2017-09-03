@@ -8,15 +8,26 @@ import java.util.Date;
 public class Video {
 
     private Integer id;
-    private String name;
-    private String intro;
-    private Integer categoryId;
-    private Integer videoStateId;
-    private String url;
-    private String thumbnailUrl;
-    private String remark;
-    private Date editTime;
 
+    private String name;
+
+    private String intro;
+
+    private Date edittime;
+
+    private Integer categoryid;
+
+    private String providername;
+
+    private String url;
+
+    private String oriurl;
+
+    private String thumbnailurl;
+
+    private Integer videostateid;
+
+    private String remark;
 
     public Integer getId() {
         return id;
@@ -31,7 +42,7 @@ public class Video {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
     public String getIntro() {
@@ -39,23 +50,31 @@ public class Video {
     }
 
     public void setIntro(String intro) {
-        this.intro = intro;
+        this.intro = intro == null ? null : intro.trim();
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public Date getEdittime() {
+        return edittime;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setEdittime(Date edittime) {
+        this.edittime = edittime;
     }
 
-    public Integer getVideoStateId() {
-        return videoStateId;
+    public Integer getCategoryid() {
+        return categoryid;
     }
 
-    public void setVideoStateId(Integer videoStateId) {
-        this.videoStateId = videoStateId;
+    public void setCategoryid(Integer categoryid) {
+        this.categoryid = categoryid;
+    }
+
+    public String getProvidername() {
+        return providername;
+    }
+
+    public void setProvidername(String providername) {
+        this.providername = providername == null ? null : providername.trim();
     }
 
     public String getUrl() {
@@ -63,15 +82,31 @@ public class Video {
     }
 
     public void setUrl(String url) {
-        this.url = url;
+        this.url = url == null ? null : url.trim();
     }
 
-    public String getThumbnailUrl() {
-        return thumbnailUrl;
+    public String getOriurl() {
+        return oriurl;
     }
 
-    public void setThumbnailUrl(String thumbnailUrl) {
-        this.thumbnailUrl = thumbnailUrl;
+    public void setOriurl(String oriurl) {
+        this.oriurl = oriurl == null ? null : oriurl.trim();
+    }
+
+    public String getThumbnailurl() {
+        return thumbnailurl;
+    }
+
+    public void setThumbnailurl(String thumbnailurl) {
+        this.thumbnailurl = thumbnailurl == null ? null : thumbnailurl.trim();
+    }
+
+    public Integer getVideostateid() {
+        return videostateid;
+    }
+
+    public void setVideostateid(Integer videostateid) {
+        this.videostateid = videostateid;
     }
 
     public String getRemark() {
@@ -79,14 +114,6 @@ public class Video {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Date getEditTime() {
-        return editTime;
-    }
-
-    public void setEditTime(Date editTime) {
-        this.editTime = editTime;
+        this.remark = remark == null ? null : remark.trim();
     }
 }

@@ -6,16 +6,27 @@
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="intro" jdbcType="VARCHAR" property="intro" />
-        <result column="edittime" jdbcType="TIMESTAMP" property="editTime" />
-        <result column="categoryid" jdbcType="INTEGER" property="categoryId" />
+        <result column="editTime" jdbcType="TIMESTAMP" property="edittime" />
+        <result column="categoryId" jdbcType="INTEGER" property="categoryid" />
+        <result column="providerName" jdbcType="VARCHAR" property="providername" />
         <result column="url" jdbcType="VARCHAR" property="url" />
-        <result column="videostateid" jdbcType="INTEGER" property="videoStateId" />
+        <result column="oriUrl" jdbcType="VARCHAR" property="oriurl" />
+        <result column="thumbnailUrl" jdbcType="VARCHAR" property="thumbnailurl" />
+        <result column="videoStateId" jdbcType="INTEGER" property="videostateid" />
         <result column="remark" jdbcType="VARCHAR" property="remark" />
     </resultMap>
 
+    <!--查询对应Id的video信息-->
     <select id="queryVideoInfoById" parameterType="int" resultMap="videoResultMap">
         select id,name,intro,editTime,categoryId,url,videoStateId,remark
         from video
         where id = ${id}
+    </select>
+
+    <!--查询topNun的对应类别的video信息-->
+    <select id="queryVideoList" parameterType="map" resultMap="videoResultMap">
+        select id,name,intro,editTime,categoryId,url,videoStateId,remark,thumbnailUrl,providerName
+        from video
+        where categoryId = ${categoryId} limit ${topNum}
     </select>
 </mapper>

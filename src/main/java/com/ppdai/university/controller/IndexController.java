@@ -23,6 +23,7 @@ public class IndexController {
     @RequestMapping("/")
     public String index(Model model){
         model.addAttribute("menuList",indexService.queryMenuInfo());
+        model.addAttribute("videoList1",indexService.queryVideoList(4,1));
         return "index/index";
     }
 }

@@ -19,7 +19,7 @@ public class VideoController {
     VideoService videoService;
 
     /**
-     *
+     * info
      * @param id
      * @return
      */

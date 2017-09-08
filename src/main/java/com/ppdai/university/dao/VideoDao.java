@@ -25,4 +25,24 @@ public interface VideoDao {
      * @return
      */
     List<Video> queryVideoList(Map<String,Object> params);
+
+    /**
+     * queryVideoAllList
+     * @return
+     */
+    List<Video> queryVideoAllList();
+
+    /**
+     * queryVideoInfoByName
+     * @param name
+     * @return
+     */
+    Video queryVideoInfoByName(String name);
+
+    /**
+     * queryVideoListByProviderName
+     * @param providerName
+     * @return
+     */
+    List<Video> queryVideoListByProviderName(String providerName);
 }

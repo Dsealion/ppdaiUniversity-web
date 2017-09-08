@@ -21,6 +21,7 @@ public class IndexServiceImpl implements IndexService {
     private MenuDao menuDao;
     @Autowired
     private VideoDao videoDao;
+
     /**
      * queryMenuInfo
      * @return
@@ -30,8 +31,43 @@ public class IndexServiceImpl implements IndexService {
         return menuDao.queryMenuInfo();
     }
 
+    /**
+     * queryVideoList
+     * @param topNum
+     * @param categoryId
+     * @return
+     */
     @Override
     public List<Video> queryVideoList(int topNum, int categoryId) {
         return videoDao.queryVideoList(MapUtil.buildMap("topNum",topNum,"categoryId",categoryId));
+    }
+
+    /**
+     * queryVideoAllList
+     * @return
+     */
+    @Override
+    public List<Video> queryVideoAllList() {
+        return videoDao.queryVideoAllList();
+    }
+
+    /**
+     * queryVideoListByName
+     * @param name
+     * @return
+     */
+    @Override
+    public Video queryVideoListByName(String name) {
+        return videoDao.queryVideoInfoByName(name);
+    }
+
+    /**
+     * queryVideoListByProviderName
+     * @param providerName
+     * @return
+     */
+    @Override
+    public List<Video> queryVideoListByProviderName(String providerName) {
+        return null;
     }
 }

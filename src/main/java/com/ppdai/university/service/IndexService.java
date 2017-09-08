@@ -15,5 +15,31 @@ public interface IndexService {
      */
     public List<Menu> queryMenuInfo();
 
+    /**
+     * queryVideoList
+     * @param topNum
+     * @param categoryId
+     * @return
+     */
     public List<Video> queryVideoList(int topNum, int categoryId);
+
+    /**
+     * queryVideoAllList
+     * @return
+     */
+    public List<Video> queryVideoAllList();
+
+    /**
+     * queryVideoListByName
+     * @param name
+     * @return
+     */
+    public Video queryVideoListByName(String name);
+
+    /**
+     * queryVideoListByProviderName
+     * @param providerName
+     * @return
+     */
+    public List<Video> queryVideoListByProviderName(String providerName);
 }

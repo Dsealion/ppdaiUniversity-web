@@ -6,7 +6,8 @@
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="intro" jdbcType="VARCHAR" property="intro" />
-        <result column="editTime" jdbcType="TIMESTAMP" property="edittime" />
+        <result column="creationDate" jdbcType="TIMESTAMP" property="creationdate" />
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
         <result column="categoryId" jdbcType="INTEGER" property="categoryid" />
         <result column="providerName" jdbcType="VARCHAR" property="providername" />
         <result column="url" jdbcType="VARCHAR" property="url" />
@@ -14,12 +15,13 @@
         <result column="thumbnailUrl" jdbcType="VARCHAR" property="thumbnailurl" />
         <result column="videoStateId" jdbcType="INTEGER" property="videostateid" />
         <result column="remark" jdbcType="VARCHAR" property="remark" />
+        <result column="playCount" jdbcType="INTEGER" property="playcount" />
     </resultMap>
 
     <!--video信息-->
     <sql id="videoInfo">
-        id, name, intro, editTime, categoryId, providerName, url, oriUrl, thumbnailUrl, videoStateId,
-        remark
+        id, name, intro, creationDate, updateTime, categoryId, providerName, url, oriUrl,
+        thumbnailUrl, videoStateId, remark, playCount
     </sql>
 
 
@@ -44,6 +46,7 @@
         select
         <include refid="videoInfo" />
         from video
+        order by creationDate desc
     </select>
 
     <!--根据name查询video信息-->
@@ -51,7 +54,7 @@
         select
         <include refid="videoInfo" />
         from video
-        where name like #{%name%} limit 1
+        where name like #{name}
     </select>
 
     <!--根据providerName查询video列表信息-->
@@ -59,7 +62,16 @@
         select
         <include refid="videoInfo" />
         from video
-        where providerName = #{providerName}
+        where providerName like #{providerName}
+    </select>
+
+    <!--根据categoryId查询video列表信息-->
+    <select id="queryVideoListByCategoryId" parameterType="int" resultMap="videoResultMap">
+        select
+        <include refid="videoInfo" />
+        from video
+        where categoryId = #{categoryId}
+        order by creationDate desc
     </select>
 
 </mapper>

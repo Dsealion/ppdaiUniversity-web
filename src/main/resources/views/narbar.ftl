@@ -2,12 +2,12 @@
     <div class="container">
         <div class="navbar-header">
             <!-- The mobile navbar-toggle button can be safely removed since you do not need it in a non-responsive implementation -->
-            <a class="navbar-brand" href="#">拍拍大学</a>
+            <a class="navbar-brand" href="/">拍拍大学</a>
         </div>
         <!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">首页</a></li>
+                <li class="active"><a href="/">首页</a></li>
                 <li><a href="#about">关于</a></li>
                 <li><a href="#contact">联系</a></li>
             </ul>
@@ -24,13 +24,11 @@
                     </select>
                     <div class="input-group">
                         <input id="contentTxt" type="text" class="form-control" placeholder="Search">
-                            <span class="input-group-btn ">
-                                <button class="btn btn-default" type="button" id="searchBtn">
-                                    <span
-                                        class="glyphicon glyphicon-search button">
-                                    </span>
-                                </button>
-                            </span>
+                        <span class="input-group-btn ">
+                            <button class="btn btn-default" type="button" id="searchBtn">
+                                <span class="glyphicon glyphicon-search button"></span>
+                            </button>
+                        </span>
                     </div>
                 </div>
             </form>
@@ -45,7 +43,9 @@
         $("#searchBtn").click(function () {
             var type = $("#typeSelect").val();
             var content = $("#contentTxt").val();
-            window.location.href = "/search?type=" + type + "&content=" + content;
+            if (content.trim()!=null){
+                window.location.href = "/search?type=" + type + "&content=" + content;
+            }
         });
     });
 </script>

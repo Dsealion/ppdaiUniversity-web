@@ -30,14 +30,14 @@ public interface VideoDao {
      * queryVideoAllList
      * @return
      */
-    List<Video> queryVideoAllList();
+    List<Video> queryAllVideoList();
 
     /**
      * queryVideoInfoByName
      * @param name
      * @return
      */
-    Video queryVideoInfoByName(String name);
+    List<Video> queryVideoInfoByName(String name);
 
     /**
      * queryVideoListByProviderName
@@ -45,4 +45,11 @@ public interface VideoDao {
      * @return
      */
     List<Video> queryVideoListByProviderName(String providerName);
+
+    /**
+     * queryVideoListByCategoryId
+     * @param categoryId
+     * @return
+     */
+    List<Video> queryVideoListByCategoryId(@Param("categoryId") int categoryId);
 }

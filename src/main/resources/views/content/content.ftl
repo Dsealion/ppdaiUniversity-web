@@ -38,10 +38,26 @@
         .panel {
             border: 0;
         }
+        .player{
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 */
+            position: relative;
+            width: 100%;
+        }
         video {
             object-fit:fill;
-            width:100%;
-            height:650px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .info{
+            padding-left: 20px;
+            padding-top: 200px;
+        }
+        .info p{
+
         }
         .panel-body{
             text-align: left;
@@ -58,10 +74,21 @@
 
     <div class="container">
         <div class="row">
-            <video src="http://ovhznawlr.bkt.clouddn.com/ted02" controls="controls"></video>
+            <div class="col-xs-9">
+                <div class="player">
+                    <video src="${videoInfo.url}" controls="controls"></video>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="info">
+                    <p>课程名：${videoInfo.name}</p>
+                    <p>提供方：${videoInfo.providername}</p>
+                    <p>播放次数：${videoInfo.playcount}</p>
+                </div>
+            </div>
         </div>
-        <div class="row">
 
+        <div class="row">
             <div class="col-xs-9">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -70,7 +97,7 @@
                         </h3>
                     </div>
                     <div class="panel-body">
-                        <p>《吉他入门经典教程》是龙之音老师学琴十几年的一套经验，摆脱传统自学吉他乐理枯燥无味，把乐理带入实际演奏中学习，即使零基础的学员也可以成为吉他高手。</p>
+                        <p>${videoInfo.intro}</p>
                     </div>
                 </div>
             </div>
@@ -82,7 +109,7 @@
                         </h3>
                     </div>
                     <div class="panel-body">
-                        <p>90后网络教学先锋，《吉他入门经典教程》作者用最简单的语言教会你弹吉他。</p>
+                        <p>${videoInfo.intro}</p>
                     </div>
                 </div>
             </div>

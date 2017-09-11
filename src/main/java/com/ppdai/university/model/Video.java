@@ -13,7 +13,9 @@ public class Video {
 
     private String intro;
 
-    private Date edittime;
+    private Date creationdate;
+
+    private Date updatetime;
 
     private Integer categoryid;
 
@@ -28,6 +30,8 @@ public class Video {
     private Integer videostateid;
 
     private String remark;
+
+    private Integer playcount;
 
     public Integer getId() {
         return id;
@@ -53,12 +57,20 @@ public class Video {
         this.intro = intro == null ? null : intro.trim();
     }
 
-    public Date getEdittime() {
-        return edittime;
+    public Date getCreationdate() {
+        return creationdate;
     }
 
-    public void setEdittime(Date edittime) {
-        this.edittime = edittime;
+    public void setCreationdate(Date creationdate) {
+        this.creationdate = creationdate;
+    }
+
+    public Date getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
     }
 
     public Integer getCategoryid() {
@@ -115,5 +127,13 @@ public class Video {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    public Integer getPlaycount() {
+        return playcount;
+    }
+
+    public void setPlaycount(Integer playcount) {
+        this.playcount = playcount;
     }
 }

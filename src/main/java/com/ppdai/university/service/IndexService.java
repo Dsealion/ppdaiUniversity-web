@@ -9,6 +9,15 @@ import java.util.List;
  * Created by zhangshibo on 2017/9/1.
  */
 public interface IndexService {
+
+    /**
+     * search
+     * @param type
+     * @param content
+     * @return
+     */
+    public List<Video> search(int type,String content);
+
     /**
      * queryMenuInfo
      * @return
@@ -23,18 +32,13 @@ public interface IndexService {
      */
     public List<Video> queryVideoList(int topNum, int categoryId);
 
-    /**
-     * queryVideoAllList
-     * @return
-     */
-    public List<Video> queryVideoAllList();
 
     /**
      * queryVideoListByName
      * @param name
      * @return
      */
-    public Video queryVideoListByName(String name);
+    public List<Video> queryVideoListByName(String name);
 
     /**
      * queryVideoListByProviderName

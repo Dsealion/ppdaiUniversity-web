@@ -6,6 +6,7 @@ import com.ppdai.university.dao.VideoDao;
 import com.ppdai.university.model.Menu;
 import com.ppdai.university.model.Video;
 import com.ppdai.university.service.IndexService;
+import com.ppdai.university.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,15 @@ public class IndexServiceImpl implements IndexService {
     private MenuDao menuDao;
     @Autowired
     private VideoDao videoDao;
+
+    @Override
+    public List<Video> search(int type, String content) {
+        if (type == 1){
+            return videoDao.queryVideoInfoByName("%"+content+"%");
+        }else {
+            return videoDao.queryVideoListByProviderName("%"+content+"%");
+        }
+    }
 
     /**
      * queryMenuInfo
@@ -43,21 +53,12 @@ public class IndexServiceImpl implements IndexService {
     }
 
     /**
-     * queryVideoAllList
-     * @return
-     */
-    @Override
-    public List<Video> queryVideoAllList() {
-        return videoDao.queryVideoAllList();
-    }
-
-    /**
      * queryVideoListByName
      * @param name
      * @return
      */
     @Override
-    public Video queryVideoListByName(String name) {
+    public List<Video> queryVideoListByName(String name) {
         return videoDao.queryVideoInfoByName(name);
     }
 

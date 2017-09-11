@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ppdai.university.dao.MenuDao">
 
-    <resultMap id="BaseResultMap" type="com.ppdai.university.model.Menu">
+    <resultMap id="MenuResultMap" type="com.ppdai.university.model.Menu">
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="parentId" jdbcType="INTEGER" property="parentid" />
         <result column="name" jdbcType="VARCHAR" property="name" />
@@ -13,11 +13,11 @@
         <result column="orderNum" jdbcType="INTEGER" property="ordernum" />
     </resultMap>
 
-    <sql id="Base_Column_List">
+    <sql id="MenuInfo">
         id, parentId, name, url, perms, type, icon, orderNum
     </sql>
 
-    <select id="queryMenuInfo" resultMap="BaseResultMap">
+    <select id="queryMenuInfo" resultMap="MenuResultMap">
         select id, parentId, name, url, perms, type, icon
         from menu
         where parentId = 4 and type = 1

@@ -50,6 +50,20 @@
         .panel {
             border: 0;
         }
+        .panelHead{
+            height: 30px;
+            padding-top: 5px;
+        }
+        .title{
+            float: left;
+        }
+        .sort{
+            float: right;
+        }
+        .sort a{
+            color: #fff;
+            cursor:pointer;
+        }
 
         footer {
             text-align: center;
@@ -65,9 +79,9 @@
     <div class="row">
         <div class="col-xs-3">
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="/user/category">所有课程分类</a></li>
-            <#list menuList as menus>
-                <li><a href="/category/page?id="+${menus.id}>${menus.name}</a></li>
+                <li class="active"><a href="/category">所有课程分类</a></li>
+            <#list categoryList as categorys>
+                <li><a href="/category/page?categoryId=${categorys.id}">${categorys.name}</a></li>
             </#list>
             <#--<li><a href="#">编程开发</a></li>-->
             <#--<li><a href="#">技术分享</a></li>-->
@@ -115,12 +129,12 @@
             <div class="panel-body" style="text-align: center">
                 <#list videoList1 as videos>
                     <div class="col-sm-6 col-md-3">
-                        <a href=${videos.url} class="thumbnail">
+                        <a href="/content?id=${videos.id}" class="thumbnail">
                             <img src=${videos.thumbnailurl} alt="缩略图未加载成功">
                         </a>
                         <p>${videos.name}</p>
                         <p>${videos.providername}</p>
-                        <p>播放次数</p>
+                        <p>${videos.playcount}</p>
                     </div>
                 </#list>
                 <#--<div class="col-sm-6 col-md-3">-->

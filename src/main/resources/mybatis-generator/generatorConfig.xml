@@ -36,21 +36,24 @@
                     <!--selectByExampleQueryId="false">-->
              <!--</table> -->
 
-             <table tableName="video" domainObjectName="Video"
-                    enableCountByExample="false" enableUpdateByExample="false"
-                    enableDeleteByExample="false" enableSelectByExample="false"
-                    selectByExampleQueryId="false">
-             </table>
-              <!--<table tableName="course" domainObjectName="Course"-->
+             <!--<table tableName="video" domainObjectName="Video"-->
                     <!--enableCountByExample="false" enableUpdateByExample="false"-->
                     <!--enableDeleteByExample="false" enableSelectByExample="false"-->
                     <!--selectByExampleQueryId="false">-->
              <!--</table>-->
+
+              <table tableName="category" domainObjectName="Category"
+                    enableCountByExample="false" enableUpdateByExample="false"
+                    enableDeleteByExample="false" enableSelectByExample="false"
+                    selectByExampleQueryId="false">
+             </table>
+
               <!--<table tableName="score" domainObjectName="Score"-->
                     <!--enableCountByExample="false" enableUpdateByExample="false"-->
                     <!--enableDeleteByExample="false" enableSelectByExample="false"-->
                     <!--selectByExampleQueryId="false">-->
              <!--</table>-->
+
               <!--<table tableName="teacher" domainObjectName="Teacher"-->
                     <!--enableCountByExample="false" enableUpdateByExample="false"-->
                     <!--enableDeleteByExample="false" enableSelectByExample="false"-->

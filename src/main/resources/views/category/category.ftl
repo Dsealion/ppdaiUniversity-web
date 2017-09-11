@@ -52,10 +52,39 @@
             display: inline;
             margin-right: 10px;
         }
+        .panelHead{
+            height: 30px;
+            padding-top: 5px;
+        }
+        .title{
+            float: left;
+        }
+        .sort{
+            padding-right: 20px;
+            float: right;
+        }
+        .sort a{
+            color: #fff;
+            cursor:pointer;
+        }
         footer{
             text-align: center;
         }
     </style>
+
+    <!--js-->
+    <script type="text/javascript">
+        $(function () {
+            $("#hotSortBtn").click(function () {
+                alert("renqi！");
+                $.post("/category/order")
+
+            });
+            $("#latestSortBtn").click(function () {
+                alert("zuixin！");
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -65,126 +94,73 @@
     <div class="container">
         <div class="row">
             <ol class="breadcrumb">
-                <li><a href="#">首页</a></li>
-                <li><a href="#">全部课程</a></li>
-                <li class="active">编程开发</li>
+                <li><a href="/">首页</a></li>
+                <li <#if isCategory==false> class="active" </#if>><a href="/category">全部课程</a></li>
+                <#if isCategory==true>
+                    <li class="active">${categoryName}</li>
+                </#if>
             </ol>
 
-            <div class="list">
-                <ul class="menulist">
-                    <li class="list-item"><a href="#">精选好课</a></li>
-                    <li class="active list-item">编程语言</a></li>
-                    <li class="list-item"><a href="#">前端开发</li>
-                    <li class="list-item"><a href="#">后端开发</a></li>
-                    <li class="list-item"><a href="#">移动开发</a></li>
-                    <li class="list-item"><a href="#">大数据</a></li>
-                </ul>
-            </div>
-            <br>
-            <div class="list">
-                <ul class="menulist">
-                    <li class="list-item"><a href="#">全部</a></li>
-                    <li class="list-item">/</li>
-                    <li class="active list-item">Java</li>
-                    <li class="list-item">/</li>
-                    <li class="list-item"><a href="#">Python</li>
-                    <li class="list-item">/</li>
-                    <li class="list-item"><a href="#">PHP</a></li>
-                    <li class="list-item">/</li>
-                    <li class="list-item"><a href="#">C</a></li>
-                    <li class="list-item">/</li>
-                    <li class="list-item"><a href="#">C++</a></li>
-                </ul>
-            </div>
+            <#--<div class="list">-->
+                <#--<ul class="menulist">-->
+                    <#--<li class="list-item"><a href="#">精选好课</a></li>-->
+                    <#--<li class="active list-item">编程语言</a></li>-->
+                    <#--<li class="list-item"><a href="#">前端开发</li>-->
+                    <#--<li class="list-item"><a href="#">后端开发</a></li>-->
+                    <#--<li class="list-item"><a href="#">移动开发</a></li>-->
+                    <#--<li class="list-item"><a href="#">大数据</a></li>-->
+                <#--</ul>-->
+            <#--</div>-->
+            <#--<br>-->
+            <#--<div class="list">-->
+                <#--<ul class="menulist">-->
+                    <#--<li class="list-item"><a href="#">全部</a></li>-->
+                    <#--<li class="list-item">/</li>-->
+                    <#--<li class="active list-item">Java</li>-->
+                    <#--<li class="list-item">/</li>-->
+                    <#--<li class="list-item"><a href="#">Python</li>-->
+                    <#--<li class="list-item">/</li>-->
+                    <#--<li class="list-item"><a href="#">PHP</a></li>-->
+                    <#--<li class="list-item">/</li>-->
+                    <#--<li class="list-item"><a href="#">C</a></li>-->
+                    <#--<li class="list-item">/</li>-->
+                    <#--<li class="list-item"><a href="#">C++</a></li>-->
+                <#--</ul>-->
+            <#--</div>-->
 
         </div>
         <div class="row" style="margin-top: 20px">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h2 class="panel-title">
-                        Java
-                    </h2>
-                </div>
-                <div class="panel-body" style="text-align: center">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="/images/cat.jpg"
-                                     alt="通用的占位符缩略图">
-                            </a>
-                            <p>java基础教程</p>
-                            <p>提供方</p>
-                            <p>播放次数</p>
+                    <div class="panelHead">
+                        <div class="title">
+                            <h2 class="panel-title">
+                            <#if isCategory==true>
+                            ${categoryName}
+                            <#else>
+                                全部课程
+                            </#if>
+                            </h2>
                         </div>
-                        <div class="col-sm-6 col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="/images/cat.jpg"
-                                     alt="通用的占位符缩略图">
-                            </a>
-                            <p>java基础教程</p>
-                            <p>提供方</p>
-                            <p>播放次数</p>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="/images/cat.jpg"
-                                     alt="通用的占位符缩略图">
-                            </a>
-                            <p>java基础教程</p>
-                            <p>提供方</p>
-                            <p>播放次数</p>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="/images/cat.jpg"
-                                     alt="通用的占位符缩略图">
-                            </a>
-                            <p>java基础教程</p>
-                            <p>提供方</p>
-                            <p>播放次数</p>
+                        <div class="sort">
+                            <a type="button" id="hotSortBtn">人气</a>&nbsp;&nbsp;&nbsp
+                            <a type="button" id="latestSortBtn" disabled="true">最新</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel-body" style="text-align: center">
-                    <div class="row">
+                    <#list videoList as videos>
                         <div class="col-sm-6 col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="/images/cat.jpg"
-                                     alt="通用的占位符缩略图">
+                            <a href="/content?id=${videos.id}" class="thumbnail">
+                                <img src=${videos.thumbnailurl} alt="缩略图未加载成功">
                             </a>
-                            <p>java基础教程</p>
-                            <p>提供方</p>
-                            <p>播放次数</p>
+                            <p>${videos.name}</p>
+                            <p>${videos.providername}</p>
+                            <p>${videos.playcount}</p>
                         </div>
-                        <div class="col-sm-6 col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="/images/cat.jpg"
-                                     alt="通用的占位符缩略图">
-                            </a>
-                            <p>java基础教程</p>
-                            <p>提供方</p>
-                            <p>播放次数</p>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="/images/cat.jpg"
-                                     alt="通用的占位符缩略图">
-                            </a>
-                            <p>java基础教程</p>
-                            <p>提供方</p>
-                            <p>播放次数</p>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="/images/cat.jpg"
-                                     alt="通用的占位符缩略图">
-                            </a>
-                            <p>java基础教程</p>
-                            <p>提供方</p>
-                            <p>播放次数</p>
-                        </div>
-                    </div>
+                    </#list>
                 </div>
+
             </div>
         </div>
     </div>

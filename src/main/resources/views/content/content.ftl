@@ -38,10 +38,26 @@
         .panel {
             border: 0;
         }
+        .player{
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 */
+            position: relative;
+            width: 100%;
+        }
         video {
             object-fit:fill;
-            width:100%;
-            height:650px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .info{
+            padding-left: 20px;
+            padding-top: 200px;
+        }
+        .info p{
+
         }
         .panel-body{
             text-align: left;
@@ -53,48 +69,26 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <!-- The mobile navbar-toggle button can be safely removed since you do not need it in a non-responsive implementation -->
-                <a class="navbar-brand" href="#">拍拍大学</a>
-            </div>
-            <!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">首页</a></li>
-                    <li><a href="#about">关于</a></li>
-                    <li><a href="#contact">联系</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">登录</a></li>
-                    <li><a href="#">注册</a></li>
-                </ul>
 
-                <form class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <select style="height: 34px; border-radius:3px;">
-                            <option value="1">课程</option>
-                            <option value="2">提供方</option>
-                        </select>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <span class="input-group-btn ">
-                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search button"></span></button>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-            </div><!--/.nav-collapse -->
-        </div>
-    </nav>
+    <#include "../narbar.ftl" parse=false/>
 
     <div class="container">
         <div class="row">
-            <video src="/videos/ted03.mp4" controls="controls"></video>
+            <div class="col-xs-9">
+                <div class="player">
+                    <video src="${videoInfo.url}" controls="controls"></video>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="info">
+                    <p>课程名：${videoInfo.name}</p>
+                    <p>提供方：${videoInfo.providername}</p>
+                    <p>播放次数：${videoInfo.playcount}</p>
+                </div>
+            </div>
         </div>
-        <div class="row">
 
+        <div class="row">
             <div class="col-xs-9">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -103,7 +97,7 @@
                         </h3>
                     </div>
                     <div class="panel-body">
-                        <p>《吉他入门经典教程》是龙之音老师学琴十几年的一套经验，摆脱传统自学吉他乐理枯燥无味，把乐理带入实际演奏中学习，即使零基础的学员也可以成为吉他高手。</p>
+                        <p>${videoInfo.intro}</p>
                     </div>
                 </div>
             </div>
@@ -115,17 +109,14 @@
                         </h3>
                     </div>
                     <div class="panel-body">
-                        <p>90后网络教学先锋，《吉他入门经典教程》作者用最简单的语言教会你弹吉他。</p>
+                        <p>${videoInfo.intro}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer>
-        <p>Posted by: ppdai</p>
-        <p>Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>
-    </footer>
+    <#include "../footer.ftl" parse=false/>
 
 </body>
 </html>

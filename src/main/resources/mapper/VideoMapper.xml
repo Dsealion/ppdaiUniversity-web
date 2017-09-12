@@ -6,16 +6,72 @@
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="intro" jdbcType="VARCHAR" property="intro" />
-        <result column="edittime" jdbcType="TIMESTAMP" property="editTime" />
-        <result column="categoryid" jdbcType="INTEGER" property="categoryId" />
+        <result column="creationDate" jdbcType="TIMESTAMP" property="creationdate" />
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+        <result column="categoryId" jdbcType="INTEGER" property="categoryid" />
+        <result column="providerName" jdbcType="VARCHAR" property="providername" />
         <result column="url" jdbcType="VARCHAR" property="url" />
-        <result column="videostateid" jdbcType="INTEGER" property="videoStateId" />
+        <result column="oriUrl" jdbcType="VARCHAR" property="oriurl" />
+        <result column="thumbnailUrl" jdbcType="VARCHAR" property="thumbnailurl" />
+        <result column="videoStateId" jdbcType="INTEGER" property="videostateid" />
         <result column="remark" jdbcType="VARCHAR" property="remark" />
+        <result column="playCount" jdbcType="INTEGER" property="playcount" />
     </resultMap>
 
+    <!--video信息-->
+    <sql id="videoInfo">
+        id, name, intro, creationDate, updateTime, categoryId, providerName, url, oriUrl,
+        thumbnailUrl, videoStateId, remark, playCount
+    </sql>
+
+
+    <!--查询对应Id的video信息-->
     <select id="queryVideoInfoById" parameterType="int" resultMap="videoResultMap">
-        select id,name,intro,editTime,categoryId,url,videoStateId,remark
+        select
+        <include refid="videoInfo" />
         from video
         where id = ${id}
     </select>
+
+    <!--查询topNun的对应类别的video列表信息-->
+    <select id="queryVideoList" parameterType="map" resultMap="videoResultMap">
+        select
+        <include refid="videoInfo" />
+        from video
+        where categoryId = ${categoryId} and videoStateId = 4 limit ${topNum}
+    </select>
+
+    <!--查询全部的video列表信息-->
+    <select id="queryAllVideoList" parameterType="map" resultMap="videoResultMap">
+        select
+        <include refid="videoInfo" />
+        from video
+        order by creationDate desc
+    </select>
+
+    <!--根据name查询video信息-->
+    <select id="queryVideoInfoByName" parameterType="string" resultMap="videoResultMap">
+        select
+        <include refid="videoInfo" />
+        from video
+        where name like #{name}
+    </select>
+
+    <!--根据providerName查询video列表信息-->
+    <select id="queryVideoListByProviderName" parameterType="string" resultMap="videoResultMap">
+        select
+        <include refid="videoInfo" />
+        from video
+        where providerName like #{providerName}
+    </select>
+
+    <!--根据categoryId查询video列表信息-->
+    <select id="queryVideoListByCategoryId" parameterType="int" resultMap="videoResultMap">
+        select
+        <include refid="videoInfo" />
+        from video
+        where categoryId = #{categoryId}
+        order by creationDate desc
+    </select>
+
 </mapper>

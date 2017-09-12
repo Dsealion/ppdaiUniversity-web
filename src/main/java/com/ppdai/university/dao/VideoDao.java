@@ -1,7 +1,10 @@
 package com.ppdai.university.dao;
 
 import com.ppdai.university.model.Video;
+import java.util.Map;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * video数据处理接口类
@@ -15,4 +18,38 @@ public interface VideoDao {
      * @return
      */
     Video queryVideoInfoById(@Param("id") int id);
+
+    /**
+     * queryVideoList
+     * @param params
+     * @return
+     */
+    List<Video> queryVideoList(Map<String,Object> params);
+
+    /**
+     * queryVideoAllList
+     * @return
+     */
+    List<Video> queryAllVideoList();
+
+    /**
+     * queryVideoInfoByName
+     * @param name
+     * @return
+     */
+    List<Video> queryVideoInfoByName(String name);
+
+    /**
+     * queryVideoListByProviderName
+     * @param providerName
+     * @return
+     */
+    List<Video> queryVideoListByProviderName(String providerName);
+
+    /**
+     * queryVideoListByCategoryId
+     * @param categoryId
+     * @return
+     */
+    List<Video> queryVideoListByCategoryId(@Param("categoryId") int categoryId);
 }

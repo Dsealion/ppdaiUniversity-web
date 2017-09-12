@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ppdai.university.dao.CategoryDao">
+
+    <resultMap id="categoryResultMap" type="com.ppdai.university.model.Category">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="menuId" jdbcType="INTEGER" property="menuid" />
+        <result column="creationDate" jdbcType="TIMESTAMP" property="creationdate" />
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+        <result column="remark" jdbcType="VARCHAR" property="remark" />
+    </resultMap>
+
+    <!--category信息-->
+    <sql id="categoryInfo">
+        id, name, menuId, creationDate, updateTime, remark
+    </sql>
+
+    <!--查询对应所有category信息-->
+    <select id="queryCategoryInfo" resultMap="categoryResultMap">
+        select
+        <include refid="categoryInfo" />
+        from category
+    </select>
+
+    <!--根据Id查询对应category信息-->
+    <select id="queryCategoryInfoById" resultMap="categoryResultMap">
+        select
+        <include refid="categoryInfo" />
+        from category
+        where id = ${id}
+    </select>
+
+</mapper>

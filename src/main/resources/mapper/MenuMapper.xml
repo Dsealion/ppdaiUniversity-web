@@ -17,6 +17,7 @@
         id, parentId, name, url, perms, type, icon, orderNum
     </sql>
 
+    <!--查询menu信息-->
     <select id="queryMenuInfo" resultMap="MenuResultMap">
         select id, parentId, name, url, perms, type, icon
         from menu

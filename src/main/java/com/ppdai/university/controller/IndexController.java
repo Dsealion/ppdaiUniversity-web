@@ -37,7 +37,7 @@ public class IndexController {
 
     @RequestMapping(value = "/search",method = RequestMethod.GET)
     public String search(Model model, @RequestParam("type") int type ,@RequestParam("content") String content){
-        model.addAttribute("isCategory",false);
+        model.addAttribute("categoryName","搜索结果");
         model.addAttribute("videoList",indexService.search(type,content));
         return "category/category";
     }

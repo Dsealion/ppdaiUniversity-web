@@ -79,7 +79,7 @@
     <div class="row">
         <div class="col-xs-3">
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="/category">所有课程分类</a></li>
+                <li class="active"><a href="/category/page">所有课程分类</a></li>
             <#list categoryList as categorys>
                 <li><a href="/category/page?categoryId=${categorys.id}">${categorys.name}</a></li>
             </#list>

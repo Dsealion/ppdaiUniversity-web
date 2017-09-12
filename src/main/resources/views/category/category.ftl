@@ -95,10 +95,13 @@
         <div class="row">
             <ol class="breadcrumb">
                 <li><a href="/">首页</a></li>
-                <li <#if isCategory==false> class="active" </#if>><a href="/category">全部课程</a></li>
-                <#if isCategory==true>
+                <li <#if categoryName=="全部课程"> class="active" </#if>><a href="/category/page">全部课程</a></li>
+                <#if categoryName!="全部课程" && categoryName!="搜索结果">
                     <li class="active">${categoryName}</li>
                 </#if>
+            <#if categoryName=="搜索结果">
+                <li class="active">${categoryName}</li>
+            </#if>
             </ol>
 
             <#--<div class="list">-->
@@ -135,11 +138,7 @@
                     <div class="panelHead">
                         <div class="title">
                             <h2 class="panel-title">
-                            <#if isCategory==true>
                             ${categoryName}
-                            <#else>
-                                全部课程
-                            </#if>
                             </h2>
                         </div>
                         <div class="sort">

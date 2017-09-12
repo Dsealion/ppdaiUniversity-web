@@ -19,7 +19,7 @@
             <form class="navbar-form navbar-right">
                 <div class="form-group">
                     <select class="form-control" id="typeSelect">
-                        <option value="1">课程</option>
+                        <option value="1" selected>课程</option>
                         <option value="2">提供方</option>
                     </select>
                     <div class="input-group">

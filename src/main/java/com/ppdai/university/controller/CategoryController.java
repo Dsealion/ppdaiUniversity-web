@@ -37,20 +37,13 @@ public class CategoryController {
      * @param categoryId
      * @return
      */
-    @RequestMapping("/category/page")
-    public String page(Model model,@RequestParam("categoryId") int categoryId){
-        model.addAttribute("isCategory",true);
-        model.addAttribute("categoryName",categoryService.queryCategoryInfoById(categoryId).getName());
-        model.addAttribute("videoList",videoService.queryVideoListByCategoryId(categoryId));
+    @RequestMapping("category/page")
+    public String page(Model model,@RequestParam(value = "categoryId",required = false) Integer categoryId){
+        model.addAttribute("categoryName",categoryId != null ? categoryService.queryCategoryInfoById(categoryId).getName():"全部课程");
+        model.addAttribute("videoList",categoryId != null ?videoService.queryVideoListByCategoryId(categoryId):videoService.queryAllVideoList());
         return "/category/category";
     }
 
-    @RequestMapping("category/order")
-    public String order(Model model,@RequestParam("categoryId") int categoryId){
-        model.addAttribute("isCategory",true);
-        model.addAttribute("categoryName",categoryService.queryCategoryInfoById(categoryId).getName());
-        model.addAttribute("videoList",videoService.queryVideoListByCategoryId(categoryId));
-        return "/category/category";
-    }
+
 
 }

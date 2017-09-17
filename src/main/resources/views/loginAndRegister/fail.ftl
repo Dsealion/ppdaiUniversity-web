@@ -28,7 +28,7 @@
         });
        $("#error").click(function () {
        		  window.location.href = "/";
-       });
+       });     
     });
 </script>
 </head>

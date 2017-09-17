@@ -55,18 +55,18 @@
     </div>
     <!-- /.login-logo -->
     <div class="row">
-        <p><small>管理员登录</small></p>
+      <form name="form" id="regUser" accept-charset="utf-8"  action="/login/userLogin" method="post"> 
         <div class="form-group has-success has-feedback">
             <div class="input-group">
                 <span class="input-group-addon">@</span>
-                <input type="text" class="form-control" id="username" placeholder="账号">
+                <input type="text" class="form-control" name ="loginName" id="loginName" placeholder="账号">
             </div>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
             <div class="input-group">
                 <span class="input-group-addon">@</span>
-                <input type="password" class="form-control" id="password" placeholder="密码">
+                <input type="password" class="form-control" name = "password" id="password" placeholder="密码">
             </div>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
@@ -91,11 +91,12 @@
             </div>
             <!-- /.col -->
             <div class="col-xs-4">
-                <button type="button" class="btn btn-primary btn-block btn-flat" @click="login">登录</button>
+                <button  type="submit" class="btn btn-primary btn-block btn-flat" id = "login">登录</button>
             </div>
             <!-- /.col -->
         </div>
         <!-- /.social-auth-links -->
+        </form>
     </div>
     <!-- /.login-box-body -->
 </div>

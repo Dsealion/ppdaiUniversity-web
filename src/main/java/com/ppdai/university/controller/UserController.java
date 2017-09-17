@@ -26,6 +26,13 @@ public class UserController {
         model.put("message","dddddd");
         return "login";
     }
+    
+    @RequestMapping("/register")
+    public String register(Map<String, Object> model){
+        model.put("time",new Date());
+        model.put("message","dddddd");
+        return "loginAndRegister/register";
+    }
 
     @RequestMapping("/index")
     public String index(Map<String, Object> model){

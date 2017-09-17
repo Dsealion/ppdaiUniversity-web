@@ -52,4 +52,17 @@ public interface VideoDao {
      * @return
      */
     List<Video> queryVideoListByCategoryId(@Param("categoryId") int categoryId);
+
+    /**
+     * queryVideoListOrderByCategoryId
+     * @param categoryId
+     * @return
+     */
+    List<Video> queryVideoListOrderByCategoryId(@Param("categoryId") int categoryId,int sortId);
+
+    /**
+     * queryAllVideoListOrder
+     * @return
+     */
+    List<Video> queryAllVideoListOrder();
 }

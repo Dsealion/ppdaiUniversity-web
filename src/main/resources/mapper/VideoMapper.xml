@@ -74,4 +74,22 @@
         order by creationDate desc
     </select>
 
+    <!--根据categoryId查询video列表信息-->
+    <select id="queryVideoListOrderByCategoryId" parameterType="int" resultMap="videoResultMap">
+        select
+        <include refid="videoInfo" />
+        from video
+        where categoryId = #{categoryId}
+        order by playCount desc
+    </select>
+
+    <!--查询全部的video列表信息-->
+    <select id="queryAllVideoListOrder" parameterType="map" resultMap="videoResultMap">
+        select
+        <include refid="videoInfo" />
+        from video
+        order by playCount desc
+    </select>
+
+
 </mapper>

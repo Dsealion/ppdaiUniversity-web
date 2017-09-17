@@ -47,5 +47,11 @@
                 window.location.href = "/search?type=" + type + "&content=" + content;
             }
         });
+        $("body").keydown(function() {
+            if (event.keyCode == "13") {//keyCode=13是回车键
+                event.preventDefault();
+                $("#searchBtn").click();
+            }
+        });
     });
 </script>

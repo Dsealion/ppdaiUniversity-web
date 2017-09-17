@@ -38,6 +38,9 @@
         .panel {
             border: 0;
         }
+        .video-container{
+            padding: 10px;
+        }
         .player{
             height: 0;
             padding-bottom: 56.25%; /* 16:9 */
@@ -51,6 +54,17 @@
             top: 0;
             width: 100%;
             height: 100%;
+        }
+        video::-internal-media-controls-download-button {
+            display:none;
+        }
+
+        video::-webkit-media-controls-enclosure {
+            overflow:hidden;
+        }
+
+        video::-webkit-media-controls-panel {
+            width: calc(100% + 30px);
         }
         .info{
             padding-left: 20px;
@@ -67,6 +81,19 @@
         }
     </style>
 
+    <script type="text/javascript">
+        $(function () {
+            var video = document.getElementById("video");;
+            video.onclick=function(){
+                if (video.paused){
+                    video.play();
+                }else {
+                    video.pause();
+                }
+            }
+        })
+    </script>
+
 </head>
 <body>
 
@@ -75,8 +102,10 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-9">
-                <div class="player">
-                    <video src="${videoInfo.url}" controls="controls"></video>
+                <div class="video-container">
+                    <div class="player">
+                        <video id="video" src="${videoInfo.url}" controls="controls" style="cursor:pointer">Your browser does not support HTML5 video.</video>
+                    </div>
                 </div>
             </div>
             <div class="col-xs-3">
@@ -84,6 +113,7 @@
                     <p>课程名：${videoInfo.name}</p>
                     <p>提供方：${videoInfo.providername}</p>
                     <p>播放次数：${videoInfo.playcount}</p>
+                    <button class="button default-button">收藏</button>
                 </div>
             </div>
         </div>

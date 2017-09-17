@@ -30,21 +30,28 @@
 
     <style type="text/css">
         body {
-            padding-top: 70px;
+            padding-top: 51px;
             padding-bottom: 30px;
+            font-size: 14px;
         }
 
         .container {
-            width: 90%;
+            width: 80%;
             max-width: none !important;
         }
-
         .navbar-brand {
             color: rgba(50, 176, 59, 1) !important;
         }
-
-        .item img {
+        #myCarousel .item{
+            height: 400px;
+        }
+        .carousel-inner img{
+            display: block;
             width: 100%;
+            height: auto;
+        }
+        #myNav ul{
+            background: #eee;
         }
 
         .panel {
@@ -64,61 +71,85 @@
             color: #fff;
             cursor:pointer;
         }
-
+        .videoInfoDiv{
+            padding-left: 10px;
+            text-align: left;
+        }
         footer {
             text-align: center;
         }
     </style>
+    <script type="text/javascript">
+        $('#myCarousel').carousel({
+            interval:   4000
+        });
+
+    </script>
 
 </head>
 <body>
 
 <#include "../narbar.ftl" parse=false/>
 
-<div class="container">
-    <div class="row">
-        <div class="col-xs-3">
-            <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="/category/page">所有课程分类</a></li>
-            <#list categoryList as categorys>
-                <li><a href="/category/page?categoryId=${categorys.id}">${categorys.name}</a></li>
-            </#list>
-            <#--<li><a href="#">编程开发</a></li>-->
-            <#--<li><a href="#">技术分享</a></li>-->
-            <#--<li><a href="#">办公效率</a></li>-->
-            <#--<li><a href="#">职业发展</a></li>-->
-            <#--<li><a href="#">企业培训</a></li>-->
-            </ul>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="http://ovhznawlr.bkt.clouddn.com/carousel1.jpg" alt="First slide">
         </div>
-        <div class="col-xs-9">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <img src="http://ovhznawlr.bkt.clouddn.com/carousel1.jpg" alt="First slide">
-                    </div>
-                    <div class="item">
-                        <img src="http://ovhznawlr.bkt.clouddn.com/carousel2.jpg" alt="Second slide">
-                    </div>
-                    <div class="item">
-                        <img src="http://ovhznawlr.bkt.clouddn.com/carousel3.jpg" alt="Third slide">
-                    </div>
-                </div>
-                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+        <div class="item">
+            <img src="http://ovhznawlr.bkt.clouddn.com/carousel2.jpg" alt="Second slide">
+        </div>
+        <div class="item">
+            <img src="http://ovhznawlr.bkt.clouddn.com/carousel3.jpg" alt="Third slide">
         </div>
     </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<div style="background: #eee">
+    <div class="container">
+        <div id="myNav">
+            <ul class="nav nav-pills nav-justified">
+                <li><a href="/category/page">所有课程分类<br>（全部）</a></li>
+            <#list categoryList as categorys>
+                <li><a href="/category/page?categoryId=${categorys.id}">${categorys.name}<br><small>（麦芽糖）</small></a></li>
+            </#list>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+    <div class="row">
+        <#--<div class="col-xs-3">-->
+            <#--<ul class="nav nav-pills nav-stacked">-->
+                <#--<li class="active"><a href="/category/page">所有课程分类</a></li>-->
+            <#--<#list categoryList as categorys>-->
+                <#--<li><a href="/category/page?categoryId=${categorys.id}">${categorys.name}</a></li>-->
+            <#--</#list>-->
+            <#--&lt;#&ndash;<li><a href="#">编程开发</a></li>&ndash;&gt;-->
+            <#--&lt;#&ndash;<li><a href="#">技术分享</a></li>&ndash;&gt;-->
+            <#--&lt;#&ndash;<li><a href="#">办公效率</a></li>&ndash;&gt;-->
+            <#--&lt;#&ndash;<li><a href="#">职业发展</a></li>&ndash;&gt;-->
+            <#--&lt;#&ndash;<li><a href="#">企业培训</a></li>&ndash;&gt;-->
+            <#--</ul>-->
+        <#--</div>-->
+        <div class="col-xs-12">
+
+        </div>
+    </div>
+
     <div class="row" style="margin-top: 20px">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -126,15 +157,17 @@
                     应届生基础课程
                 </h2>
             </div>
-            <div class="panel-body" style="text-align: center">
+            <div class="panel-body" >
                 <#list videoList1 as videos>
-                    <div class="col-sm-6 col-md-3">
+                    <div class="col-sm-6 col-md-3" style="cursor:pointer;" onclick="window.location.href='/content?id=${videos.id}'">
                         <a href="/content?id=${videos.id}" class="thumbnail">
                             <img src=${videos.thumbnailurl} alt="缩略图未加载成功">
                         </a>
-                        <p>${videos.name}</p>
-                        <p>${videos.providername}</p>
-                        <p>${videos.playcount}</p>
+                        <div class="videoInfoDiv">
+                            <p>${videos.name}</p>
+                            <p><small>提供方：${videos.providername}</small></p>
+                            <p><small>播放次数：<span style="color: crimson">${videos.playcount}</span></small></p>
+                        </div>
                     </div>
                 </#list>
                 <#--<div class="col-sm-6 col-md-3">-->
@@ -184,15 +217,17 @@
                 </h3>
             </div>
             <div class="panel-body">
-                <div class="panel-body" style="text-align: center">
+                <div class="panel-body">
                     <#list videoList2 as videos>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-3" style="cursor:pointer;" onclick="window.location.href='/content?id=${videos.id}'">
                             <a href=${videos.url} class="thumbnail">
                                 <img src=${videos.thumbnailurl} alt="缩略图未加载成功">
                             </a>
-                            <p>${videos.name}</p>
-                            <p>${videos.providername}</p>
-                            <p>播放次数</p>
+                            <div class="videoInfoDiv">
+                                <p>${videos.name}</p>
+                                <p><small>提供方：${videos.providername}</small></p>
+                                <p><small>播放次数：<span style="color: crimson">${videos.playcount}</span></small></p>
+                            </div>
                         </div>
                     </#list>
                 </div>

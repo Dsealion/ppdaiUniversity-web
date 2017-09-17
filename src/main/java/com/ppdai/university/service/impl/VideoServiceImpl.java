@@ -45,4 +45,25 @@ public class VideoServiceImpl implements VideoService {
     public List<Video> queryVideoListByCategoryId(int categoryId) {
         return videoDao.queryVideoListByCategoryId(categoryId);
     }
+
+    /**
+     * queryVideoListOrderByCategoryId
+     * @param categoryId
+     * @param sortId
+     * @return
+     */
+    @Override
+    public List<Video> queryVideoListOrderByCategoryId(int categoryId,int sortId) {
+        return sortId == 1 ? videoDao.queryVideoListOrderByCategoryId(categoryId,sortId) : videoDao.queryVideoListByCategoryId(categoryId);
+    }
+
+    /**
+     * queryAllVideoListOrder
+     * @param sortId
+     * @return
+     */
+    @Override
+    public List<Video> queryAllVideoListOrder(int sortId) {
+        return sortId == 1 ? videoDao.queryAllVideoListOrder() : videoDao.queryAllVideoList();
+    }
 }

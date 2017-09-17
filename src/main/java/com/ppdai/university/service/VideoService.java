@@ -32,4 +32,18 @@ public interface VideoService {
      */
     List<Video> queryVideoListByCategoryId(int categoryId);
 
+    /**
+     * queryVideoListOrderByCategoryId
+     * @param categoryId
+     * @param sortId
+     * @return
+     */
+    List<Video> queryVideoListOrderByCategoryId(int categoryId,int sortId);
+
+    /**
+     * queryAllVideoListOrder
+     * @param sortId
+     * @return
+     */
+    List<Video> queryAllVideoListOrder(int sortId);
 }

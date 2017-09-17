@@ -26,7 +26,7 @@ public class CategoryController {
      */
     @RequestMapping("/category")
     public String info(Model model){
-        model.addAttribute("isCategory",false);
+        model.addAttribute("categoryName","全部课程");
         model.addAttribute("videoList",videoService.queryAllVideoList());
         return "/category/category";
     }
@@ -37,10 +37,31 @@ public class CategoryController {
      * @param categoryId
      * @return
      */
-    @RequestMapping("category/page")
+    @RequestMapping("/category/page")
     public String page(Model model,@RequestParam(value = "categoryId",required = false) Integer categoryId){
         model.addAttribute("categoryName",categoryId != null ? categoryService.queryCategoryInfoById(categoryId).getName():"全部课程");
         model.addAttribute("videoList",categoryId != null ?videoService.queryVideoListByCategoryId(categoryId):videoService.queryAllVideoList());
+        return "/category/category";
+    }
+
+    /**
+     * order
+     * @param model
+     * @param categoryId
+     * @param sortId
+     * @return
+     */
+    @RequestMapping(value = "/category/order")
+    public String order(Model model,@RequestParam(value = "categoryId",required = false) Integer categoryId,@RequestParam("sortId") int sortId){
+        model.addAttribute("categoryName",categoryId != null ? categoryService.queryCategoryInfoById(categoryId).getName():"全部课程");
+        model.addAttribute("videoList",categoryId != null ?videoService.queryVideoListOrderByCategoryId(categoryId,sortId):videoService.queryAllVideoListOrder(sortId));
+        return "/category/category";
+    }
+
+    @RequestMapping(value = "/category/search")
+    public String search(Model model,@RequestParam(value = "categoryId",required = false) Integer categoryId,@RequestParam("sortId") int sortId){
+        model.addAttribute("categoryName",categoryId != null ? categoryService.queryCategoryInfoById(categoryId).getName():"全部课程");
+        model.addAttribute("videoList",categoryId != null ?videoService.queryVideoListOrderByCategoryId(categoryId,sortId):videoService.queryAllVideoListOrder(sortId));
         return "/category/category";
     }
 

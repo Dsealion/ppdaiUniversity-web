@@ -25,11 +25,11 @@
 
     <style type="text/css">
         body {
-            padding-top: 70px;
+            padding-top: 51px;
             padding-bottom: 30px;
         }
         .container{
-            width: 90%;
+            width: 80%;
             max-width: none !important;
         }
         .navbar-brand{
@@ -67,6 +67,10 @@
             color: #fff;
             cursor:pointer;
         }
+        .videoInfoDiv{
+            padding-left: 10px;
+            text-align: left;
+        }
         footer{
             text-align: center;
         }
@@ -75,13 +79,27 @@
     <!--js-->
     <script type="text/javascript">
         $(function () {
+            var li1 = $.trim($("#li1").text());
+            var li2 = $.trim($("#li2").text());
+
             $("#hotSortBtn").click(function () {
-                alert("renqi！");
-                $.post("/category/order")
+
+                var params = {categoryId:1,sortId:1}
+                $.get("/category/order",params,function(result){
+                    $("#videoList").empty();
+                    $("#videoList").html(
+
+                    );
+                });
 
             });
             $("#latestSortBtn").click(function () {
                 alert("zuixin！");
+            });
+            $("ul li").click(function(){
+                var this = $(this);
+                alert(this.val());
+                this.attr("class","active");
             });
         });
     </script>
@@ -91,24 +109,41 @@
 
     <#include "../narbar.ftl" parse=false/>
 
-    <div class="container">
+    <div class="container" style="margin-top: 10px">
         <div class="row">
             <ol class="breadcrumb">
                 <li><a href="/">首页</a></li>
-                <li <#if categoryName=="全部课程"> class="active" </#if>><a href="/category/page">全部课程</a></li>
+                <li id="li1" <#if categoryName=="全部课程"> class="active" </#if>><a href="/category/page">全部课程</a></li>
                 <#if categoryName!="全部课程" && categoryName!="搜索结果">
-                    <li class="active">${categoryName}</li>
+                    <li id="li2" class="active">${categoryName}</li>
                 </#if>
-            <#if categoryName=="搜索结果">
-                <li class="active">${categoryName}</li>
-            </#if>
+                <#if categoryName=="搜索结果">
+                    <li id="li2" class="active">${categoryName}</li>
+                </#if>
             </ol>
+            <#if categoryName=="搜索结果">
+                <div class="list">
+                    <ul class="menulist">
+                        <li class="active list-item">全部</li>
+                        <li class="list-item">/</li>
+                        <li class="list-item"><a href="#">新人培训类</a></li>
+                        <li class="list-item">/</li>
+                        <li class="list-item"><a href="#">通用技能类</a></li>
+                        <li class="list-item">/</li>
+                        <li class="list-item"><a href="#">初级管理者</a></li>
+                        <li class="list-item">/</li>
+                        <li class="list-item"><a href="#">中层管理者</a></li>
+                        <li class="list-item">/</li>
+                        <li class="list-item"><a href="#">高层管理者</a></li>
+                    </ul>
+                </div>
+            </#if>
 
             <#--<div class="list">-->
                 <#--<ul class="menulist">-->
                     <#--<li class="list-item"><a href="#">精选好课</a></li>-->
-                    <#--<li class="active list-item">编程语言</a></li>-->
-                    <#--<li class="list-item"><a href="#">前端开发</li>-->
+                    <#--<li class="active list-item">编程语言</li>-->
+                    <#--<li class="list-item"><a href="#">前端开发</a></li>-->
                     <#--<li class="list-item"><a href="#">后端开发</a></li>-->
                     <#--<li class="list-item"><a href="#">移动开发</a></li>-->
                     <#--<li class="list-item"><a href="#">大数据</a></li>-->
@@ -147,15 +182,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-body" style="text-align: center">
+                <div id="videoList" class="panel-body" style="text-align: center">
                     <#list videoList as videos>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-3" style="cursor:pointer;" onclick="window.location.href='/content?id=${videos.id}'">
                             <a href="/content?id=${videos.id}" class="thumbnail">
                                 <img src=${videos.thumbnailurl} alt="缩略图未加载成功">
                             </a>
-                            <p>${videos.name}</p>
-                            <p>${videos.providername}</p>
-                            <p>${videos.playcount}</p>
+                            <div class="videoInfoDiv">
+                                <p>${videos.name}</p>
+                                <p><small>提供方：${videos.providername}</small></p>
+                                <p><small>播放次数：<span style="color: crimson">${videos.playcount}</span></small></p>
+                            </div>
                         </div>
                     </#list>
                 </div>

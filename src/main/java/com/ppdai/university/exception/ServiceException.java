@@ -1,4 +1,4 @@
-package com.ppdai.ppddaiuniversity.exception;
+package com.ppdai.university.exception;
 
 /**
  * 

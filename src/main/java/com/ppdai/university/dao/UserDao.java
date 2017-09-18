@@ -1,8 +1,9 @@
 package com.ppdai.university.dao;
 
 import java.util.List;
-import com.ppdai.ppddaiuniversity.exception.DAOException;
+
 import com.ppdai.university.domain.UserDO;
+import com.ppdai.university.exception.DAOException;
 
 
  /**

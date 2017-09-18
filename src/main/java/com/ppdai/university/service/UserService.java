@@ -2,8 +2,8 @@ package com.ppdai.university.service;
 
 import java.util.List;
 
-import com.ppdai.ppddaiuniversity.exception.ServiceException;
 import com.ppdai.university.domain.UserDO;
+import com.ppdai.university.exception.ServiceException;
  /**
  *  Service
  */

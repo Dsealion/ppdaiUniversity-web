@@ -7,10 +7,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ppdai.ppddaiuniversity.exception.DAOException;
-import com.ppdai.ppddaiuniversity.exception.ServiceException;
 import com.ppdai.university.dao.UserDao;
 import com.ppdai.university.domain.UserDO;
+import com.ppdai.university.exception.DAOException;
+import com.ppdai.university.exception.ServiceException;
 import com.ppdai.university.service.UserService;
 
 @Service(value="userService")

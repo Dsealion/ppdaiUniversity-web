@@ -100,6 +100,19 @@
 		WHERE id = #{id}
 	</update>
 
+		<update id="updateDynamic" parameterType="com.ppdai.university.domain.UserDO">
+				UPDATE user
+				<set>
+							<if test="userName != null  and userName != '' ">user_name=#{userName},</if>
+							<if test="password != null  and password != '' ">password=#{password},</if>
+							<if test="email != null  and email != '' ">email=#{email},</if>
+							<if test="status != null ">status=#{status},</if>
+							<if test="inserttime != null ">inserttime=#{inserttime},</if>
+							<if test="updatetime != null ">updatetime=#{updatetime},</if>
+							<if test="isactive != null ">isactive=#{isactive},</if>
+				</set>
+				WHERE token=#{token}
+			</update>
  	<select id="selectDynamic" resultMap="UserDOResultMap" parameterType="com.ppdai.university.domain.UserDO">
 	     SELECT
 	     	<include refid="MybatisUserDAO_all_column_fields" />

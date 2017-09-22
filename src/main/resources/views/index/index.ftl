@@ -73,7 +73,8 @@
 </head>
 <body>
 
-<#include "../narbar.ftl" parse=false/>
+<#assign flag = isLogin>
+<#include "../narbar.ftl" >
 
 <div class="container">
     <div class="row">

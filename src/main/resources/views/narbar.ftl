@@ -1,4 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
+
     <div class="container">
         <div class="navbar-header">
             <!-- The mobile navbar-toggle button can be safely removed since you do not need it in a non-responsive implementation -->
@@ -11,18 +12,19 @@
                 <li><a href="#about">关于</a></li>
                 <li><a href="#contact">联系</a></li>
             </ul>
-            <#if  isLogin != "success">
+            
+             <#if flag == "false">
 	            <ul class="nav navbar-nav navbar-right">
 	                <li><a href="javaScript:" id = "login">登录</a></li>
-	                <li><a href="javaScript:"  id = "register">注册</a></li>
+	                <li><a href="javaScript:" id = "register">注册</a></li>
 	            </ul>
-			</#if>
-			<#if  isLogin??>
-	            <ul class="nav navbar-nav navbar-right">
-	                <li>欢迎你  ${resutl}</li>
+			 </#if>
+			 <#if flag == "true">
+                <ul class="nav navbar-nav navbar-right">
+                	<li><a href="javaScript:" >${resutl}</a></li>
 	                <li><a href="javaScript:"  id = "logout">登出</a></li>
 	            </ul>
-			</#if>
+		     </#if>
             <form class="navbar-form navbar-right">
                 <div class="form-group">
                     <select class="form-control" id="typeSelect">
@@ -62,7 +64,7 @@
        		  window.location.href = "/user/register";
        });
         $("#logout").click(function () {
-       		  window.location.href = "/user/login";
+       		  window.location.href = "/";
        });
     });
 </script>

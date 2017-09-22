@@ -53,49 +53,49 @@
     <div class="row">
         <h3>拍拍大学</h3>
     </div>
-    <!-- /.login-logo -->
+    
     <div class="row">
       <form name="form" id="regUser" accept-charset="utf-8"  action="/login/userLogin" method="post"> 
         <div class="form-group has-success has-feedback">
             <div class="input-group">
-                <span class="input-group-addon">@</span>
+                <span class="input-group-addon">账号</span>
                 <input type="text" class="form-control" name ="loginName" id="loginName" placeholder="账号">
             </div>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
             <div class="input-group">
-                <span class="input-group-addon">@</span>
+                <span class="input-group-addon">密码</span>
                 <input type="password" class="form-control" name = "password" id="password" placeholder="密码">
             </div>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
-        <div class="form-group has-success has-feedback">
+
+		<div class="form-group has-success has-feedback">
             <div class="input-group">
-                <span class="input-group-addon">@</span>
+                <span class="input-group-addon">验证</span>
                 <input type="text" class="form-control" id="captcha" @keyup.enter="login" placeholder="验证码">
             </div>
             <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
         </div>
+        
         <div class="form-group has-success has-feedback">
             <div class="form-group has-feedback">
-                <img alt="如果看不清楚，请单击图片刷新！" class="pointer" :src="src" @click="refreshCode">
-                &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" @click="refreshCode">点击刷新</a>
+                <img alt="如果看不清楚，请单击图片刷新！" class="pointer" src="login/check" @click="refreshCode">
+                &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="refreshCode">点击刷新</a>
             </div>
         </div>
-
         <div class="row">
             <div class="col-xs-8">
                 <div class="checkbox icheck">
                 </div>
             </div>
             <!-- /.col -->
-            <div class="col-xs-4">
+            <div class="col-xs-12">
                 <button  type="submit" class="btn btn-primary btn-block btn-flat" id = "login">登录</button>
             </div>
             <!-- /.col -->
         </div>
-        <!-- /.social-auth-links -->
         </form>
     </div>
     <!-- /.login-box-body -->

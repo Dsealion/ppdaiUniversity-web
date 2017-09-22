@@ -32,6 +32,7 @@ public class IndexController {
         model.addAttribute("categoryList",categoryService.queryCategoryInfo());
         model.addAttribute("videoList1",indexService.queryVideoList(4,1));
         model.addAttribute("videoList2",indexService.queryVideoList(4,2));
+        model.addAttribute("isLogin","false");
         return "index/index";
     }
 

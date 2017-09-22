@@ -80,4 +80,20 @@ public class RegisterController {
 		}
 	}
 	
+	@RequestMapping("/userActive")
+	public String active(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		
+		String token = request.getParameter("acode");
+		
+		UserDO userDO = new UserDO();
+		userDO.setUpdatetime(new Date());
+		userDO.setStatus(1);
+		userDO.setToken(token);
+		
+		userService.update(userDO, false);
+		
+		return "/login";
+	}
+	
 }

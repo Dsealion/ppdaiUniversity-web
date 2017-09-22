@@ -80,11 +80,11 @@ public class MySendMailThread extends Thread {
 			// StringBuilder是线程不安全的,但是速度快，这里因为只会有这个线程来访问，所以可以用这个
 			StringBuilder sbd = new StringBuilder();
 			sbd.append(user.getUserName() + "<br/>欢迎！请确认此邮件地址以激活您的账号。<br/>");
-			sbd.append("<font color='red'><a href='http://localhost:8080/user/login?acode="
+			sbd.append("<font color='red'><a href='http://localhost:8080/register/userActive?acode="
 					+ user.getToken() + "' target='_blank'");
 			sbd.append(">立即激活</a></font><br/>");
 			sbd.append("或者点击下面链接:<br/>");
-			sbd.append("http://localhost:8080/user/login?acode="
+			sbd.append("http://localhost:8080/register/userActive?acode="
 					+ user.getToken() + "<br/>");
 			sbd.append("这是一封自动发送的邮件；如果您并未要求但收到这封信件，您不需要进行任何操作。");
 

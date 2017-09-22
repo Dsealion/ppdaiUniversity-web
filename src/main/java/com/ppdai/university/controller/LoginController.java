@@ -11,10 +11,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ppdai.university.domain.UserDO;
+import com.ppdai.university.exception.BussinessException;
+import com.ppdai.university.service.CategoryService;
+import com.ppdai.university.service.IndexService;
 import com.ppdai.university.service.UserService;
 
 /**
@@ -32,6 +36,11 @@ public class LoginController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+    private IndexService indexService;
+	@Autowired
+    private CategoryService categoryService;
 	/**
 	 * 用户登录
 	 * 
@@ -56,13 +65,13 @@ public class LoginController {
 			List<UserDO>  userDOs = userService.selectDynamic(userDO);
 			
 			if(userDOs.size() != 0){
-				model.addAttribute("isLogin","success");
-				model.addAttribute("resutl","欢迎你"+userDOs.get(0).getUserName());
-				
-				return "/";
+				model.addAttribute("categoryList",categoryService.queryCategoryInfo());
+		        model.addAttribute("videoList1",indexService.queryVideoList(4,1));
+		        model.addAttribute("videoList2",indexService.queryVideoList(4,2));
+		        model.addAttribute("isLogin","true");
+				model.addAttribute("resutl","欢迎您  "+userDOs.get(0).getUserName());
+				return "index/index";
 			}
-			
-			
 		} catch (Exception ae) {
 			logger.info("Shiro Exception --> AuthenticationException ");
 			logger.info("Unexpected condition error");
@@ -71,6 +80,33 @@ public class LoginController {
 		return null;
 	}
 
+	@SuppressWarnings("rawtypes")
+	@RequestMapping("/check")
+	public void check(Model model, HttpServletRequest request, String code) throws IOException {
+
+		String codeRequest = request.getParameter("code");
+		try {
+			if (StringUtils.isEmpty(codeRequest)) {  
+				logger.error("没有生成验证码信息");  
+	            throw new IllegalStateException("ERR-01000");  
+	        } 
+			
+			if (StringUtils.isEmpty(code)) {  
+				logger.error("未填写验证码信息");
+				throw new BussinessException("ERR-06019");  
+	        }  
+			
+			 if (codeRequest.equalsIgnoreCase(code)) {  
+		            // 验证码通过  
+		        } else {  
+		        	logger.error("验证码错误");  
+		            throw new BussinessException("ERR-06019");  
+		        }  
+		} catch (Exception ae) {
+			logger.info("Shiro Exception --> AuthenticationException ");
+			logger.info("Unexpected condition error");
+		}
+	}
 	/**
 	 * 登陆用户退出
 	 * 
